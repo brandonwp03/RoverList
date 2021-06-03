@@ -26,14 +26,22 @@ namespace RoverList
         public override void Add(T data)
         {
             Node newNode = new Node(data);
-
+            current = head;
             if (head == null)
             {
                 head = newNode;
             }
             else
             {
-                throw new EntryPointNotFoundException();
+                while(true)
+                    {
+                        if(current = null)
+                        {
+                            current = newNode;
+                        break;
+                        }
+                        current = current.Next;
+                    }
             }
 
             count++;
@@ -42,7 +50,29 @@ namespace RoverList
 
         public override void Add(int Position, T data)
         {
-            throw new IndexOutOfRangeException ();
+            Node newNode = new Node(data);
+            current = head;
+            if (head == null)
+            {
+                head = newNode;
+            }
+            else
+            {
+                int pos = 0;
+                while(true)
+                    {
+                    
+                        if(current = pos)
+                        {
+                            current = newNode;
+                        break;
+                        }
+                        current = current.Next;
+                    pos++;
+                    }
+            }
+
+            count++;
         }
 
         public override void Clear()
@@ -52,14 +82,20 @@ namespace RoverList
 
         public override T ElementAt(int Position)
         {
+            current = head;
             if (Position < 0 || Position >= count) 
                 throw new IndexOutOfRangeException();
 
             current = head;
-
+            int pos = 0;
             while (current.Next != null)
             {
+                if(pos = Position)
+                    {
+                        return current;
+                    }
                 current = current.Next;
+                pos++;
             }
 
             return default(T);
@@ -76,6 +112,7 @@ namespace RoverList
 
         public override bool RemoveAt(int Position)
         {
+            current = head;
             bool removed = false;
             if (Position == 0)
             {
